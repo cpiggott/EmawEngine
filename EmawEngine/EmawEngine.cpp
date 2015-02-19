@@ -51,7 +51,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		OutputDebugString(L"creating model\n");
 		Model* m;
 		m = new Model();
-		m->load("models/test.fbx");
+		m->load("models/test2.fbx");
+		std::vector<Vertex> v = m->getVertexBuffer();
+		std::vector<Triangle> t = m->getTriangleList();
 	}
 	
 	// Main game loop:
