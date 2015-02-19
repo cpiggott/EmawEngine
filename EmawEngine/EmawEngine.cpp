@@ -47,6 +47,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	}
 
 	// temporary model testing
+	/*
 	{
 		OutputDebugString(L"creating model\n");
 		Model* m;
@@ -55,6 +56,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		std::vector<Vertex> v = m->getVertexBuffer();
 		std::vector<Triangle> t = m->getTriangleList();
 	}
+	*/
 	
 	// Main game loop:
 	while(true)

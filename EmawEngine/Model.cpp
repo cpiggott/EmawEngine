@@ -70,7 +70,7 @@ void* Model::load(char* filename) {
 						OutputDebugString(L"unknown");
 						break;
 					}
-					OutputDebugString(L" given\n");
+					OutputDebugString(L" given; make sure your model only has triangles.\n");
 				}
 				for (int k = 0; k < numVerticies; k++) {
 					int controlPointIndex = mesh->GetPolygonVertex(j, k);
