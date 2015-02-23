@@ -32,5 +32,6 @@ public:
 	std::vector<Vertex> getVertexBuffer();
 	std::vector<Triangle> getTriangleList();
 private:
-
+	vector<Vertex> vertexBuffer;
+	vector<Triangle> triangleList;
 };

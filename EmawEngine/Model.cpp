@@ -3,43 +3,44 @@
 
 using namespace std;
 
-vector<Vertex> vertexBuffer;
-vector<Triangle> triangleList;
-
 Model::Model() {
 
 }
 
 Model::~Model() {
-
+	this->unload();
 }
 
 void* Model::load(char* filename) {
 	if (strlen(filename) <= 4) {
 		OutputDebugString(L"file is of incorrect length\n");
+		return NULL;
 	}
 	// todo: fix for upper case input
 	if (strncmp(".fbx", filename + (strlen(filename) - 4), 4) != 0) {
 		OutputDebugString(L"file extension is incorrect\n");
+		return NULL;
 	}
 
 	// initialize fbx loader thing
+	// the following block should be moved to the asset manager
 	FbxManager* FbxLoader = NULL;
 	FbxLoader = FbxManager::Create();
 	FbxIOSettings* IOsettings = FbxIOSettings::Create(FbxLoader, IOSROOT);
 	FbxLoader->SetIOSettings(IOsettings);
-
 	FbxImporter* importer = FbxImporter::Create(FbxLoader, "");
 	FbxScene* scene = FbxScene::Create(FbxLoader, "");
 
 	bool success = importer->Initialize(filename, -1,
 		FbxLoader->GetIOSettings());
 	if (!success) {
-		OutputDebugString(L"some kinda failure\n");
+		OutputDebugString(L"failed to load model\n");
+		return NULL;
 	}
 	success = importer->Import(scene);
 	if (!success) {
 		OutputDebugString(L"some kinda failure\n");
+		return NULL;
 	}
 
 	importer->Destroy();
@@ -71,6 +72,7 @@ void* Model::load(char* filename) {
 						break;
 					}
 					OutputDebugString(L" given; make sure your model only has triangles.\n");
+					return NULL;
 				}
 				for (int k = 0; k < numVerticies; k++) {
 					int controlPointIndex = mesh->GetPolygonVertex(j, k);
@@ -107,16 +109,6 @@ void* Model::load(char* filename) {
 		}
 	}
 
-	// load fbx file
-	ifstream file;
-	file.open(filename);
-	if (!file.is_open()) {
-		OutputDebugString(L"failed to open model file\n");
-	}
-
-
-	file.close();
-
 	return NULL;
 }
 
@@ -125,7 +117,9 @@ void* Model::getData() {
 }
 
 bool Model::unload() {
-	return NULL;
+	vertexBuffer.clear();
+	triangleList.clear();
+	return true;
 }
 
 vector<Vertex> Model::getVertexBuffer() {
