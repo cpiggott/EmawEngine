@@ -9,6 +9,8 @@
 #include <fbxsdk.h>
 #include <vector>
 
+using namespace std;
+
 struct Vertex {
 	float x;
 	float y;

@@ -24,15 +24,15 @@ void* Model::load(char* filename) {
 
 	// initialize fbx loader thing
 	// the following block should be moved to the asset manager
-	FbxManager* FbxLoader = NULL;
-	FbxLoader = FbxManager::Create();
-	FbxIOSettings* IOsettings = FbxIOSettings::Create(FbxLoader, IOSROOT);
-	FbxLoader->SetIOSettings(IOsettings);
-	FbxImporter* importer = FbxImporter::Create(FbxLoader, "");
-	FbxScene* scene = FbxScene::Create(FbxLoader, "");
+	FbxManager* manager = NULL;
+	manager = FbxManager::Create();
+	FbxIOSettings* IOsettings = FbxIOSettings::Create(manager, IOSROOT);
+	manager->SetIOSettings(IOsettings);
+	FbxImporter* importer = FbxImporter::Create(manager, "");
+	FbxScene* scene = FbxScene::Create(manager, "");
 
 	bool success = importer->Initialize(filename, -1,
-		FbxLoader->GetIOSettings());
+		manager->GetIOSettings());
 	if (!success) {
 		OutputDebugString(L"failed to load model\n");
 		return NULL;
