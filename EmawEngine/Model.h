@@ -25,6 +25,9 @@ struct Triangle {
 };
 
 class Model {
+private:
+	std::vector<Vertex> vertexBuffer;
+	std::vector<Triangle> triangleList;
 public:
 	Model();
 	~Model();
@@ -33,7 +36,4 @@ public:
 	bool unload();
 	std::vector<Vertex> getVertexBuffer();
 	std::vector<Triangle> getTriangleList();
-private:
-	vector<Vertex> vertexBuffer;
-	vector<Triangle> triangleList;
 };

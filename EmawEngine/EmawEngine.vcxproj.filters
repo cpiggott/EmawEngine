@@ -9,7 +9,14 @@
       <Filter>Core Systems</Filter>
     </ClCompile>
     <ClCompile Include="Asset.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Model.cpp" />
+=======
+    <ClCompile Include="ShaderAsset.cpp" />
+    <ClCompile Include="WindowSize.cpp">
+      <Filter>Low-Level Renderer</Filter>
+    </ClCompile>
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
@@ -22,7 +29,15 @@
       <Filter>Core Systems</Filter>
     </ClInclude>
     <ClInclude Include="Asset.h" />
+<<<<<<< HEAD
     <ClInclude Include="Model.h" />
+=======
+    <ClInclude Include="ShaderAsset.h" />
+    <ClInclude Include="HelperStructs.h" />
+    <ClInclude Include="WindowSize.h">
+      <Filter>Low-Level Renderer</Filter>
+    </ClInclude>
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="EmawEngine.rc" />
@@ -50,5 +65,8 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{7cb0be83-89c8-4854-831f-8a7b140301f5}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders.shader" />
   </ItemGroup>
 </Project>

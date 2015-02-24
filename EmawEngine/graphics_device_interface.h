@@ -13,7 +13,7 @@ public:
 	GraphicsDeviceInterface();
 	~GraphicsDeviceInterface();
 
-	bool Initialize(HWND);
+	bool Initialize(HWND, WindowSize*);
 	void Shutdown();
 	void NextFrame();
 
